@@ -6,11 +6,11 @@ namespace ConsoleApp2
 {
     class Place
     {
-        public static string PlaceName;
-        public static string Municipality;
-        public static string Region;
+        public  string PlaceName;
+        public  string Municipality;
+        public  string Region;
 
-        public static void ShowPlace()
+        public  void ShowPlace()
         {
             var labelWidth = 8;
             ShowSepRow(8);
@@ -21,7 +21,7 @@ namespace ConsoleApp2
         }
 
 
-        private static void ShowFieldNameAndValue(string label, int labelWidth, string fieldValue)
+        private  void ShowFieldNameAndValue(string label, int labelWidth, string fieldValue)
         {
             labelWidth -= label.Length;
             Console.WriteLine("  " + label + ":" + string.Empty.PadLeft(labelWidth, ' ') + fieldValue);
@@ -31,7 +31,7 @@ namespace ConsoleApp2
         //{
         //    ShowSepRow(8);
         //}
-        static void ShowSepRow(int labelWidth)
+        private void ShowSepRow(int labelWidth)
         {
             labelWidth += 14;
             Console.WriteLine(string.Empty.PadLeft(labelWidth, '*'));
