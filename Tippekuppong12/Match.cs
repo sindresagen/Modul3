@@ -15,6 +15,7 @@ namespace Tippekuppong12
 
         public Match(string betx)
         {
+            betx = betx.ToUpper();
             bet = betx;
             Play();
         }
@@ -26,28 +27,37 @@ namespace Tippekuppong12
                 Console.Write("Kommandoer: \r\n - H = scoring hjemmelag\r\n - B = scoring bortelag\r\n - X = kampen er ferdig\r\nAngi kommando: ");
                 _command = Console.ReadLine();
                 if (_command == "X") MatchIsRunning = false;
-                else if (_command == "H") HomeGoals++;
-                else if (_command == "B") AwayGoals++;
+                else if (_command == "H") AddGoal(_command == "H");
+                else if (_command == "B") AddGoal(_command == "H");
                 System.Console.WriteLine($"Stillingen er {HomeGoals}-{AwayGoals}");
             }
 
             CheckResult();
         }
 
-        private void CheckResult()
+        public void AddGoal(bool v)
+        {
+            if (v) HomeGoals++;
+            else AwayGoals++;
+            
+        }
+
+        public bool CheckResult()
         {
             string result = "";
             if (HomeGoals == AwayGoals) result = "U";
             else if (HomeGoals > AwayGoals) result = "H";
             else result = "B";
-            isBetCorrect(result);
+            Result = result;
+            return IsBetCorrect(result);
         }
 
-        private void isBetCorrect(string result)
+        public bool IsBetCorrect(string result)
         {
             string isBetCorrect = bet.Contains(result) ? "riktig" : "feil";
             System.Console.WriteLine($"Du tippet {isBetCorrect}");
             Result = isBetCorrect;
+            return isBetCorrect == "riktig";
         }
     }
 }
