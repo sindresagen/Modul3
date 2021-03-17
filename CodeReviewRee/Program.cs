@@ -12,6 +12,9 @@ namespace CodeReviewRee
             var userInput = Console.ReadLine();
             if (userInput == "Y" || userInput == "y") Students.studentPlukkern(students);
             else Console.WriteLine("Neivel!");
+            Console.WriteLine("Vil du velge på nytt?\r\n(Y / N)");
+            var restartPlukker = Console.ReadLine();
+            if (restartPlukker == "Y" || restartPlukker == "y") Students.VælkømminTekst(students);
         }
     }
 }

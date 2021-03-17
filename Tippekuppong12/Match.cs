@@ -17,7 +17,6 @@ namespace Tippekuppong12
         {
             betx = betx.ToUpper();
             bet = betx;
-            Play();
         }
 
         private void Play()
@@ -55,7 +54,6 @@ namespace Tippekuppong12
         public bool IsBetCorrect(string result)
         {
             string isBetCorrect = bet.Contains(result) ? "riktig" : "feil";
-            System.Console.WriteLine($"Du tippet {isBetCorrect}");
             Result = isBetCorrect;
             return isBetCorrect == "riktig";
         }

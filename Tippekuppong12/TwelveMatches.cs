@@ -11,7 +11,7 @@ namespace Tippekuppong12
         string[] bets;
         Match[] matches = new Match[12];
         int correctCount = 0;
-        bool gameFinished = false;
+        public bool gameFinished = false;
         string command = "";
         public TwelveMatches()
         {
@@ -25,53 +25,61 @@ namespace Tippekuppong12
 
         private void SplitStrings(string betsText)
         {
-            bets = betsText.Split(",");
-            for (var i = 0; i < 12; i++)
+            if (!gameFinished)
             {
-                matches[i] = new Match(bets[i]);
+                helpText(0, 0);
+                bets = betsText.Split(",");
+                for (var i = 0; i < 12; i++)
+                {
+                    matches[i] = new Match(bets[i]);
+                    PlayGame(matches[i], i);
+                }
             }
+            else
+            {
+                PrintNumberCorrect();
+            }
+            
+
         }
 
         private void SelectAndScoreMatch()
         {
-            while (!gameFinished)
+            
+        }
+
+        public void PlayGame(Match singleMatch, int i)
+        {
+            // vi holder på her, må vise frem hva man skal gjøre hver gang. eks 1-12 og hvilken Scoring
+            if (!gameFinished)
             {
-                helpText(0, 0);
-                command = Console.ReadLine();
-                if (command == "X") break;
-                PlayGame();
+                var matchNo = i+1;
+                System.Console.WriteLine($"Du scorer for {matchNo}");
+                System.Console.WriteLine("Skriv inn H, B eller U");
+                var team = Console.ReadLine();
+                var selectedMatch = singleMatch;
+                selectedMatch.AddGoal(team == "H");
+                if (selectedMatch.IsBetCorrect(team))
+                {
+                    correctCount++;
+                }
+                if (team == "X")
+                {
+                    gameFinished = true;
+                    System.Console.WriteLine($"Du fikk {correctCount} riktige!");
+                    return;
+                }
             }
         }
 
-        private void PlayGame()
-        {
-            var matchNo = Convert.ToInt32(command);
-            var team = Console.ReadLine();
-            var selectedMatch = matches[matchNo - 1];
-            int matchCount = 0;
-            selectedMatch.AddGoal(team == "H");
-            for (var index = 0; index < matches.Length; index++)
-            {
-                var match = matches[index];
-                var matchNoI = index + 1;
-                var isBetCorrect = match.CheckResult();
-                var isBetCorrectText = isBetCorrect ? "riktig" : "feil";
-                if (isBetCorrect) IncreaseScore();
-                Console.WriteLine($"Kamp {matchNo}: {match.Result} - {isBetCorrectText}");
-                matchCount++;
-            }
-
-            if (matchCount >= 11) PrintNumberCorrect();
-        }
-
-        private int IncreaseScore()
-        {
-            return correctCount++;
-        }
+        //private int IncreaseScore()
+        //{
+        //    return correctCount++;
+        //}
 
         private void PrintNumberCorrect()
         {
-            Console.WriteLine($"Du har {this.correctCount} rette.");
+            Console.WriteLine($"Du har {correctCount} rette.");
         }
 
         private static void helpText(int version, int matchNo)

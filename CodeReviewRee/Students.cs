@@ -20,5 +20,10 @@ namespace CodeReviewRee
     {
     Console.Write("Hei!\r\nVil du velge to stakkarer som skal vise frem neste uke?\r\n(Y / N)\r\n");
     }
+
+    public static void RestartPlukker()
+    {
+            
+    }
 }
 }
