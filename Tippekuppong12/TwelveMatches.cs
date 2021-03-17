@@ -31,16 +31,16 @@ namespace Tippekuppong12
                 bets = betsText.Split(",");
                 for (var i = 0; i < 12; i++)
                 {
+                    if (i == 11)
+                    {
+                        gameFinished = true;
+                        PrintNumberCorrect();
+                        break;
+                    }
                     matches[i] = new Match(bets[i]);
                     PlayGame(matches[i], i);
                 }
             }
-            else
-            {
-                PrintNumberCorrect();
-            }
-            
-
         }
 
         private void SelectAndScoreMatch()
