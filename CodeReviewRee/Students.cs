@@ -10,8 +10,8 @@ namespace CodeReviewRee
         { 
         Random r = new Random();
 
-        int index1 = r.Next(students.Length);
-        int index2 = r.Next(students.Length);
+        int index1 = r.Next(0, students.Length);
+        int index2 = r.Next(0, students.Length);
 
         Console.WriteLine($"De neste stakkarene er {students[index1]} og {students[index2]}!!1!");
     }
