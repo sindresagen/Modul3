@@ -27,7 +27,7 @@ namespace Tippekupong1kamp
                 if (_command == "X") MatchIsRunning = false;
                 else if (_command == "H") HomeGoals++;
                 else if (_command == "B") AwayGoals++;
-                System.Console.WriteLine($"Stillingen er {HomeGoals}-{AwayGoals}");
+                Console.WriteLine($"Stillingen er {HomeGoals}-{AwayGoals}");
             }
 
             CheckResult();
@@ -45,7 +45,7 @@ namespace Tippekupong1kamp
         private void isBetCorrect(string result)
         {
             string isBetCorrect = bet.Contains(result) ? "riktig" : "feil";
-            System.Console.WriteLine($"Du tippet {isBetCorrect}");
+            Console.WriteLine($"Du tippet {isBetCorrect}");
         }
     }
 }

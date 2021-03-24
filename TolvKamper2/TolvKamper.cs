@@ -2,25 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-namespace Tippekuppong12
+namespace TolvKamper2
 {
-    class TwelveMatches
+    class TolvKamper
     {
         string betsText;
         string[] bets;
         Match[] matches = new Match[12];
-        int correctCount = 0;
-        public bool gameFinished = false;
-        string command = "";
-        public TwelveMatches()
+        int correctCount;
+        public bool gameFinished;
+        public TolvKamper()
         {
-            Console.Write("Gyldig tips: \r\n - H, U, B\r\n - halvgardering: HU, HB, UB\r\n - helgardering: HUB\r\nSkriv inn dine 12 tips med komma mellom: ");
             betsText = Console.ReadLine();
             SplitStrings(betsText);
-
-
-
         }
 
         private void SplitStrings(string betsText)
@@ -43,39 +37,30 @@ namespace Tippekuppong12
             }
         }
 
-        private void SelectAndScoreMatch()
-        {
-
-        }
 
         public void PlayGame(Match singleMatch, int i)
         {
-            // vi holder på her, må vise frem hva man skal gjøre hver gang. eks 1-12 og hvilken Scoring
+
             if (!gameFinished)
             {
                 var matchNo = i + 1;
-                System.Console.WriteLine($"Du scorer for {matchNo}");
-                System.Console.WriteLine("Skriv inn H, B eller U");
-                var team = Console.ReadLine();
+                Console.WriteLine($"Du scorer for {matchNo}");
+                Console.WriteLine("Skriv inn H, B eller U");
+                var command = Console.ReadLine();
                 var selectedMatch = singleMatch;
-                selectedMatch.AddGoal(team == "H");
-                if (selectedMatch.IsBetCorrect(team))
+                selectedMatch.HandleCommand(command == "H" || command == "B"));
+                if (selectedMatch.IsBetCorrect())
                 {
                     correctCount++;
                 }
-                if (team == "X")
+                if (command == "X")
                 {
                     gameFinished = true;
-                    System.Console.WriteLine($"Du fikk {correctCount} riktige!");
-                    return;
+                    Console.WriteLine($"Du fikk {correctCount} riktige!");
                 }
             }
         }
 
-        //private int IncreaseScore()
-        //{
-        //    return correctCount++;
-        //}
 
         private void PrintNumberCorrect()
         {

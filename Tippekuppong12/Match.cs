@@ -38,7 +38,7 @@ namespace Tippekuppong12
         {
             if (v) HomeGoals++;
             else AwayGoals++;
-            
+
         }
 
         public bool CheckResult()
