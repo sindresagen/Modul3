@@ -8,7 +8,7 @@ namespace LibraryOO
         static void Main(string[] args)
         {
             Book book1 = new Book(400, "JK Rowling", "Harry Potter and the Philosophers Stone", "Fantasy");
-            Book book2 = new Book(420, "JK Rowling", "Harry Plopper and the Final Solution", "Fantasy");
+            Book book2 = new Book(420, "JK Rowling", "Harry Plopper and the Prisoner from Azkaban", "Fantasy");
             Library library = new Library(book1, book2);
             
             
