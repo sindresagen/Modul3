@@ -7,7 +7,7 @@ namespace LibraryOOSmall
 {
     class Book
     {
-        private string _title;
+        public string _title { get; private set; }
         private string _author;
         private string _genre;
         private int _pageCount;
@@ -24,5 +24,7 @@ namespace LibraryOOSmall
         {
             return $"Title: {_title}\nAuthor: {_author}\nGenre: {_genre}\nNumber of pages: {_pageCount}\n";
         }
+
+
     }
 }

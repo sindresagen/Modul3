@@ -9,10 +9,6 @@ namespace LibraryOO
         public List<Book> Books;
         public List<Customer> Customers;
 
-        public Library()
-        {
-            Books = new List<Book>();
-        }
 
         public Library(params Book[] books)
         {

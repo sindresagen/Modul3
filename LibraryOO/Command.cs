@@ -91,6 +91,7 @@ namespace LibraryOO
             {
                 GetBookInfo();
             }
+            library.ListBooks();
         }
 
         private void GetBookInfo()
