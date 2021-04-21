@@ -122,7 +122,7 @@ namespace LibraryOOSmall
 
         public void BorrowBook()
         {
-            library.Customers.Add(customer);
+            //library.Customers.Add(customer);
             library.ListBooks();
             Console.WriteLine("Choose a book to borrow");
             var bookTitle = Console.ReadLine();
