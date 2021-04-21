@@ -9,14 +9,16 @@ namespace LibraryOOSmall
     class Command
     {
         private Library library;
+        private Customer customer;
 
         public bool IsCustomer;
         public bool IsEmployee;
 
 
-        public Command(Library library)
+        public Command(Library library, Customer customer)
         {
             this.library = library;
+            this.customer = customer;
         }
 
         public void LibraryHeader()
@@ -120,11 +122,32 @@ namespace LibraryOOSmall
 
         public void BorrowBook()
         {
+            library.Customers.Add(customer);
             library.ListBooks();
-            Console.WriteLine("Choose book to borrow");
-            var input = Console.ReadLine();
+            Console.WriteLine("Choose a book to borrow");
+            var bookTitle = Console.ReadLine();
+            var book = FindBookInLibrary(library, bookTitle);
+            library.Customers[0].BorrowedBooks.Add(book);
+            library.Books.Remove(book);
+            ShowAllBooks(library);
             //library.BorrowedBooks.Add(new Book());
-            library.Books.RemoveAt(Int32.Parse(input ?? throw new InvalidOperationException()));
+            //library.Books.RemoveAt(Int32.Parse(input ?? throw new InvalidOperationException()));
+        }
+
+        public void ShowAllBooks(Library library)
+        {
+            library.ListBooks();
+            customer.ListBorrowedBooks();
+        }
+
+        private static Book FindBookInLibrary(Library library, string bookTitle)
+        {
+            foreach (var book in library.Books)
+            {
+                if (book._title == bookTitle) return book;
+            }
+
+            return null;
         }
 
         public void GetBookInfo()

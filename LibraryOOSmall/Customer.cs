@@ -12,5 +12,13 @@ namespace LibraryOOSmall
         {
             BorrowedBooks = new List<Book>(books);
         }
+
+        public void ListBorrowedBooks()
+        {
+            foreach (var book in BorrowedBooks)
+            {
+                Console.WriteLine("Borrowed book(s):\n" + book.GetDescription() + "\n");
+            }
+        }
     }
 }

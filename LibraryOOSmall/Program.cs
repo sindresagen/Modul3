@@ -13,7 +13,7 @@ namespace LibraryOOSmall
 
             while (true)
             {
-                var command = new Command(library);
+                var command = new Command(library, customer);
                 command.LibraryHeader();
                 command.EmployeeOrCustomer();
                 
