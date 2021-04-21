@@ -69,7 +69,7 @@ namespace LibraryOOSmall
             {
                 case "1":
                     library.ListBooks();
-                    library.ListBorrowedBooks();
+                    //library.ListBorrowedBooks();
                     break;
                 case "2":
                     BorrowBook();
@@ -99,7 +99,7 @@ namespace LibraryOOSmall
             {
                 case "1":
                     library.ListBooks();
-                    library.ListBorrowedBooks();
+                    //library.ListBorrowedBooks();
                     break;
                 case "2":
                     BorrowBook();
@@ -123,7 +123,7 @@ namespace LibraryOOSmall
             library.ListBooks();
             Console.WriteLine("Choose book to borrow");
             var input = Console.ReadLine();
-            library.BorrowedBooks.AddRange(library.Books);
+            //library.BorrowedBooks.Add(new Book());
             library.Books.RemoveAt(Int32.Parse(input ?? throw new InvalidOperationException()));
         }
 
