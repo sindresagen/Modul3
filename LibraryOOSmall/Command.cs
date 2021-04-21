@@ -122,6 +122,8 @@ namespace LibraryOOSmall
 
         public void BorrowBook()
         {
+            //Prøver å lage funksjon til å ta ut en bok fra lista med bøker.
+
             //library.Customers.Add(customer);
             library.ListBooks();
             Console.WriteLine("Choose a book to borrow");
@@ -129,12 +131,11 @@ namespace LibraryOOSmall
             var book = FindBookInLibrary(library, bookTitle);
             library.Customers[0].BorrowedBooks.Add(book);
             library.Books.Remove(book);
-            ShowAllBooks(library);
-            //library.BorrowedBooks.Add(new Book());
+            ShowAllBooks();
             //library.Books.RemoveAt(Int32.Parse(input ?? throw new InvalidOperationException()));
         }
 
-        public void ShowAllBooks(Library library)
+        public void ShowAllBooks()
         {
             library.ListBooks();
             customer.ListBorrowedBooks();
