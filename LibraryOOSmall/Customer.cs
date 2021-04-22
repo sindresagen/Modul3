@@ -6,19 +6,14 @@ namespace LibraryOOSmall
 {
     class Customer
     {
-        public List<Book> BorrowedBooks;
+        
+        public List<Book> BorrowedBooks = new List<Book>();
+        public int Id { get; private set; } = IdGenerator.Generate();
 
-        public Customer(params Book[] books)
+        public Customer(int id)
         {
-            BorrowedBooks = new List<Book>(books);
+            Id = id;
         }
 
-        public void ListBorrowedBooks()
-        {
-            foreach (var book in BorrowedBooks)
-            {
-                Console.WriteLine("Borrowed book(s):\n" + book.GetDescription() + "\n");
-            }
-        }
     }
 }

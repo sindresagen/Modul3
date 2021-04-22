@@ -9,16 +9,14 @@ namespace LibraryOOSmall
     class Command
     {
         private Library library;
-        private Customer customer;
 
         public bool IsCustomer;
         public bool IsEmployee;
 
 
-        public Command(Library library, Customer customer)
+        public Command(Library library)
         {
             this.library = library;
-            this.customer = customer;
         }
 
         public void LibraryHeader()
@@ -39,8 +37,11 @@ namespace LibraryOOSmall
 
         public void EmployeeOrCustomer()
         {
-            Console.WriteLine("Welcome!\nPick 1 for employee menu\nPick 2 for customer menu.\n");
+            Console.WriteLine("Hello! Type adduser to add new user\n");
             var command = Console.ReadLine();
+            if (command == "adduser") AddUser();
+            
+            Console.WriteLine("Welcome!\nPick 1 for employee menu\nPick 2 for customer menu.\n");
             if (command == "1")
             {
                 IsEmployee = true;
@@ -65,6 +66,16 @@ namespace LibraryOOSmall
             
         }
 
+        private void AddUser()
+        {
+            Console.WriteLine("Write in the ID you wish:");
+            var id = Int32.Parse(Console.ReadLine());
+            var customer = new Customer(id);
+
+            library.AddCustomer(customer);
+            Console.WriteLine($"Id er {customer.Id}");
+        }
+
         public void HandleEmployeeCommand(string command)
         {
             switch (command)
@@ -78,6 +89,8 @@ namespace LibraryOOSmall
                     Console.WriteLine("You borrowed book");
                     break;
                 case "3":
+                    library.GetBorrowedBook();
+                    ReturnBook();
                     Console.WriteLine("You returned book");
                     break;
                 case "4":
@@ -108,6 +121,8 @@ namespace LibraryOOSmall
                     Console.WriteLine("You borrowed book");
                     break;
                 case "3":
+                    library.GetBorrowedBook();
+                    ReturnBook();
                     Console.WriteLine("You returned book");
                     break;
                 case "4":
@@ -125,31 +140,23 @@ namespace LibraryOOSmall
             //Prøver å lage funksjon til å ta ut en bok fra lista med bøker.
 
             //library.Customers.Add(customer);
-            library.ListBooks();
-            Console.WriteLine("Choose a book to borrow");
-            var bookTitle = Console.ReadLine();
-            var book = FindBookInLibrary(library, bookTitle);
-            library.Customers[0].BorrowedBooks.Add(book);
-            library.Books.Remove(book);
-            ShowAllBooks();
+           
+            var customer = library.GetCustomer();
+            var book = library.GetBook();
+            library.BorrowBook(customer, book);
+            
+            //ShowAllBooks(library,);
             //library.Books.RemoveAt(Int32.Parse(input ?? throw new InvalidOperationException()));
         }
 
-        public void ShowAllBooks()
+        public void ReturnBook()
         {
-            library.ListBooks();
-            customer.ListBorrowedBooks();
+            var customer = library.GetCustomer();
+            var book = library.GetBook();
+            library.ReturnBook(customer, book);
         }
 
-        private static Book FindBookInLibrary(Library library, string bookTitle)
-        {
-            foreach (var book in library.Books)
-            {
-                if (book._title == bookTitle) return book;
-            }
 
-            return null;
-        }
 
         public void GetBookInfo()
         {

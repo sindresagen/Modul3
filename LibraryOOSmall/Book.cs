@@ -7,7 +7,8 @@ namespace LibraryOOSmall
 {
     class Book
     {
-        public string _title { get; private set; }
+        public int _id = IdGenerator.Generate();
+        public string _title { get; }
         private string _author;
         private string _genre;
         private int _pageCount;
@@ -22,7 +23,7 @@ namespace LibraryOOSmall
 
         public string GetDescription()
         {
-            return $"Title: {_title}\nAuthor: {_author}\nGenre: {_genre}\nNumber of pages: {_pageCount}\n";
+            return $"ID: {_id} Title: {_title}\nAuthor: {_author}\nGenre: {_genre}\nNumber of pages: {_pageCount}\n";
         }
 
 
