@@ -6,7 +6,7 @@ using System.Threading.Channels;
 
 namespace LibraryOOSmall
 {
-    class Command
+    class CommandHandler
     {
         private Library library;
 
@@ -14,7 +14,7 @@ namespace LibraryOOSmall
         public bool IsEmployee;
 
 
-        public Command(Library library)
+        public CommandHandler(Library library)
         {
             this.library = library;
         }
