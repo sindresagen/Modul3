@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modul2obligmedbackend", "modul2obligmedbackend.csproj", "{611BA517-DA8E-4177-B4D1-94980A089AED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{611BA517-DA8E-4177-B4D1-94980A089AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611BA517-DA8E-4177-B4D1-94980A089AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611BA517-DA8E-4177-B4D1-94980A089AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611BA517-DA8E-4177-B4D1-94980A089AED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7644F5A8-6D3B-43A2-99C5-D4BC233D4BEB}
+	EndGlobalSection
+EndGlobal

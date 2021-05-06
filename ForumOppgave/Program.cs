@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ForumOppgave
 {
@@ -6,8 +8,11 @@ namespace ForumOppgave
     {
         static void Main(string[] args)
         {
-            var conStr = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=ForumOppgave;Integrated Security=True";
-            new SqlConnection
+            DataSet ds = new DataSet();
+            SqlParameter[] p = new SqlParameter[1];
+            string Query = "Describe Query Information/either sp, text or TableDirect";
+            DbConnectionHelper dbh = new DbConnectionHelper();
+            ds = dbh.DBConnection("Post", p, "", CommandType.StoredProcedure);
         }
     }
 }
