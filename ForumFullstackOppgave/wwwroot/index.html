@@ -5,6 +5,34 @@
     <title></title>
 </head>
 <body>
+<div id="app"></div>
+<script>
+    const model = {
+        inputs: {}
+    };
 
+    updateView();
+    function updateView() {
+        document.getElementById('app').innerHTML = `
+        <input type="text" oninput="model.inputs.name=this.value" />
+        <button onclick="createPost()">Lag ny post</button>
+        <h3>Poster</h3>
+        ${model.post.map(p => `<li> ${p.poster} </li>`)}`;
+    }
+
+    async function createPost() {
+        const post = { poster: model.inputs.poster };
+        let response = await axios.get('/api/post', post);
+        console.log(response);
+        getData();
+    }
+
+    async function getData() {
+        let response = await axios.get('/api/post');
+        model.post = response.data;
+        updateView();
+    }}
+
+</script>
 </body>
 </html>
