@@ -23,7 +23,7 @@ namespace LibraryOOSmall
         public Customer GetCustomer()
         {
             Console.WriteLine("What's your user id?");
-            var id = Int32.Parse(Console.ReadLine()); //?? throw new InvalidOperationException()
+            var id = Int32.Parse(Console.ReadLine());
             var customer = GetCustomerById(id);
             return customer;
         }
@@ -34,7 +34,6 @@ namespace LibraryOOSmall
             {
                 if (customer.Id == id) return customer;
             }
-
             return null;
         }
 
@@ -46,7 +45,6 @@ namespace LibraryOOSmall
             {
                 if (customer.Id == id) return customer;
             }
-
             return null;
         }
 

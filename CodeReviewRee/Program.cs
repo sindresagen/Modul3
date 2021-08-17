@@ -6,7 +6,7 @@ namespace CodeReviewRee
     {
         static void Main(string[] args)
         {
-            string[] students = { "Erik", "Henrik", "Kristian", "Stian", "Mikael", "Angelica", "Sondre", "Theodor", "Sigve" };
+            string[] students = { "Sindre", "Agith", "Bjørn", "Mikael" };
             var Kjør = true;
             while (Kjør)
             {
